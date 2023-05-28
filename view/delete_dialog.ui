@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Delete_dialog</class>
+ <widget class="QDialog" name="Delete_dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>263</width>
+    <height>68</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Delete event</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../resources/clndr_res.qrc">
+    <normaloff>:/calendar.ico</normaloff>:/calendar.ico</iconset>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>228</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QPushButton" name="yesButton">
+      <property name="text">
+       <string>Yes</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="noButton">
+      <property name="text">
+       <string>No</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Are you sure you want to delete this event?</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../resources/clndr_res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
