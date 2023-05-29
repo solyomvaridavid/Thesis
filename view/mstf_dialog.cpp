@@ -71,24 +71,22 @@ void MSTF_Dialog::onFindButtonClicked()
 
     invitees = invitees.remove(invitees.size()-1, 1);
 
-    QEventLoop spareTimeWaitLoop;
+    //QEventLoop spareTimeWaitLoop;
 
     connect(model.get(),
             &Model::findFinished,
-            &spareTimeWaitLoop,
-            &QEventLoop::quit);
+            this,
+            [this](QString event){
+        if (event == "notime") {
+            QMessageBox::warning(this, "Failed to find mutual spare time",
+                                 "Couldn't find mutual spare time in the next 2 weeks!");
+            this->close();
+        } else {
+            QMessageBox::information(this, "Mutual spare time found",
+                                     event);
+            this->close();
+        }
+    });
 
-    QString event = model->findTime(duration, from_time, til_time, invitees);
-
-    if(model->getEvent().isEmpty()) {
-        spareTimeWaitLoop.exec();
-    }
-
-    if (event == "notime") {
-        QMessageBox::warning(this, "Failed to find mutual spare time",
-                             "Couldn't find mutual spare time in the next 2 weeks!");
-    } else {
-        QMessageBox::information(this, "Mutual spare time found",
-                                 event);
-    }
+    model->findTime(duration, from_time, til_time, invitees);
 }

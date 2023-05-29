@@ -35,10 +35,11 @@ signals:
     void settingsPut(std::optional<int>);
     void settingsApplied(QString theme);
     void tokenSetFinished();
-    void findFinished();
+    void findFinished(QString s);
 
 public:
     QString getToken() { return token; }
+    void setToken(QString s) { token = s; }
     QString getEvent() { return foundEvent; }
     void addEvent(const QString name, const QString start_date, const QString start_time,
                   const QString end_time, const QString label, const QString occurrence,
@@ -57,7 +58,7 @@ public:
     void putSettings(const QString theme);
     void applySettings();
 
-    QString findTime(const int duration, const QString from_time, const QString til_time,
+    void findTime(const int duration, const QString from_time, const QString til_time,
                   const QString invitees);
 
 private:

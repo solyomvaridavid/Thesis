@@ -328,9 +328,10 @@ void Model::applySettings()
     });
 }
 
-QString Model::findTime(const int duration, const QString from_time, const QString til_time,
+void Model::findTime(const int duration, const QString from_time, const QString til_time,
                      const QString invitees)
 {
+    //qDebug() << duration << from_time << til_time, invitees;
     const QUrl url("http://127.0.0.1:8080/api/sparetime?" + invitees + "&duration=" + QString::number(duration)  + "&from_time=" + from_time + "&til_time=" + til_time);
     QNetworkRequest request(url);
 
@@ -339,23 +340,23 @@ QString Model::findTime(const int duration, const QString from_time, const QStri
 
     QNetworkReply *reply = manager.get(request);
 
-    QString event;
-
     connect(reply,
             &QNetworkReply::finished,
             this,
-            [this, reply, &event] {
+            [this, reply] {
         if(reply->error() == QNetworkReply::NoError){
-            event = QString::fromUtf8(reply->readAll());
+            auto event = QString::fromUtf8(reply->readAll());
+            //qDebug() << event;
             foundEvent = event;
-            emit findFinished();
+            emit findFinished(event);
         }
         else{
-            event = "notime";
+            auto event = "notime";
+            emit findFinished(event);
         }
         reply->deleteLater();
     });
-    return event;
+
 }
 
 void Model::deleteEvent(const int eventId)

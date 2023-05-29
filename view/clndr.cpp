@@ -238,6 +238,7 @@ void Clndr::onAccountButtonClicked()
         this->close();
         QDate today = QDate::currentDate();
         ui->calendarWidget->setSelectedDate(today);
+        Model::getInstance()->setToken("");
         emit loginDialogRequested();
     });
 

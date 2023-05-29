@@ -51,6 +51,7 @@ void Add_dialog::initConnections()
             this,
             [this](std::optional<int> value) {
         if (value == std::nullopt) {
+            //model->listModelPopulate(QDate::fromString(date));
             this->close();
         } else {
             switch(value.value()) {
