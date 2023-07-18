@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/helpres">
+        <file alias="accounthelp">accounthelp.png</file>
+        <file alias="addhelp">addhelp.png</file>
+        <file alias="calendarhelp">calendarhelp.png</file>
+        <file alias="edithelp">edithelp.png</file>
+        <file alias="mutualhelp">mutualhelp.png</file>
+        <file alias="settingshelp">settingshelp.png</file>
+    </qresource>
+</RCC>
